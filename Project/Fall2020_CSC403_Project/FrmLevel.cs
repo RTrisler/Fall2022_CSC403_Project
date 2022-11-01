@@ -2,6 +2,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Fall2020_CSC403_Project 
 {
@@ -37,7 +39,21 @@ namespace Fall2020_CSC403_Project
             office_desk.Img = picOfficeDesk.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
             techlead.Img = picTechlead.BackgroundImage;
+        }
+    private void Talk(Enemy enemy)
+    {
+      player.ResetMoveSpeed();
+      player.MoveBack();
+      enemy_frmDialogue = FrmDialogue.GetInstance(enemy, enemyList);
+      Console.WriteLine(enemy_frmDialogue);
+      enemy_frmDialogue.Show();
+    }
 
+    private void FrmLevel_KeyDown(object sender, KeyEventArgs e) {
+      switch (e.KeyCode) {
+        case Keys.Left:
+          player.GoLeft();
+          break;
             bossKoolaid.Color = Color.Red;
             enemyCheeto.Color = Color.FromArgb(255, 245, 161);
 
@@ -153,19 +169,19 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel_KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyCode) {
-                case Keys.Left:
+                case Keys.A:
                     player.GoLeft();
                     break;
 
-                case Keys.Right:
+                case Keys.D:
                     player.GoRight();
                     break;
 
-                case Keys.Up:
+                case Keys.W:
                     player.GoUp();
                     break;
 
-                case Keys.Down:
+                case Keys.S:
                     player.GoDown();
                     break;
 
