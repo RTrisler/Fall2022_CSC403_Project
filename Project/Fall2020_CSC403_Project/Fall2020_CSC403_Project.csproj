@@ -56,6 +56,12 @@
     <Compile Include="FrmBattle.Designer.cs">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDialogue.Designer.cs">
+      <DependentUpon>FrmDialogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHelpScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDialogue.resx">
+      <DependentUpon>FrmDialogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHelpScreen.resx">
       <DependentUpon>FrmHelpScreen.cs</DependentUpon>
@@ -158,6 +167,7 @@
     <Content Include="data\menubackground.jpg" />
     <None Include="Resources\inventory.png" />
     <None Include="Resources\inventory.bmp" />
+    <Content Include="data\persuasion.PNG" />
     <None Include="Resources\wasd.jpg" />
     <None Include="Resources\techlead.png" />
     <None Include="Resources\elevator1.png" />
