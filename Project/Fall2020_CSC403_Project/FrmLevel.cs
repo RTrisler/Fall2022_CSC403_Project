@@ -22,6 +22,7 @@ namespace Fall2020_CSC403_Project
         public bool FIGHTED;
         List<Enemy> enemyList;
         private Character[] walls;
+        private Character secretDesk;
         const int PADDING = 4;
         const int NUM_WALLS = 11;
         public PictureBox _pictechlead;
@@ -30,6 +31,7 @@ namespace Fall2020_CSC403_Project
         private FrmBattle frmBattle;
         private FrmSnake frmSnake;
         FrmDialogue enemy_frmDialogue;
+        private bool stapleFlag = false;
 
         public FrmLevel()
         {
@@ -46,10 +48,9 @@ namespace Fall2020_CSC403_Project
             office_desk = new Enemy(CreatePosition(picOfficeDesk), CreateCollider(picOfficeDesk, PADDING));
             enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
             techlead = new Enemy(CreatePosition(picTechlead), CreateCollider(picTechlead, PADDING));
-            enemyList = new List<Enemy> { enemyCheeto, techlead, bossKoolaid, elevator };
-
-            _pictechlead = picTechlead;
-            elevator.Img = picElevator.BackgroundImage;
+            enemyList = new List<Enemy> { enemyCheeto, techlead, bossKoolaid };
+            secretDesk = new Character(CreatePosition(picWall3), CreateCollider(picWall3, PADDING));
+            bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             office_desk.Img = picOfficeDesk.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
             techlead.Img = picTechlead.BackgroundImage;
@@ -133,8 +134,19 @@ namespace Fall2020_CSC403_Project
             {
                 Talk(enemyCheeto);
             }
-         
-
+            if (HitAChar(player, bossKoolaid))
+            {
+                Fight(bossKoolaid);
+                wasdFalse();
+            }
+            if (HitAChar(player, secretDesk))
+            {
+                stapleCollected();
+            }
+            if (HitAChar(player, techlead))
+            {
+                GameOver();
+            }
             // update player's picture box
             picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
         }
@@ -235,6 +247,21 @@ namespace Fall2020_CSC403_Project
             }
         }
 
+        private void stapleCollected()
+        {
+            if (!stapleFlag)
+            {
+                wasdFalse();
+                player.ResetMoveSpeed();
+                stapleFlag = true;
+                string message = "A stapler has been collected!!";
+                string caption = "Alert";
+                var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.OK,
+                                         MessageBoxIcon.Information);
+                player.addToInventory(1);
+            }
+         }
 
         public void GameOver()
         {
