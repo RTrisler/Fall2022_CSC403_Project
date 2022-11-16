@@ -103,6 +103,14 @@ namespace Fall2020_CSC403_Project
                 level2.Show();
             }
             player.ResetMoveSpeed();
+            if (e.KeyCode == Keys.W)
+                w = false;
+            if (e.KeyCode == Keys.A)
+                a = false;
+            if (e.KeyCode == Keys.S)
+                s = false;
+            if (e.KeyCode == Keys.D)
+                d = false;
         }
 
         private void tmrUpdateInGameTime_Tick(object sender, EventArgs e)
@@ -121,16 +129,19 @@ namespace Fall2020_CSC403_Project
             // check collision with walls
             if (HitAWall(player))
             {
+                wasdFalse();
                 player.MoveBack();
             }
 
             // check collision with enemies
             if (HitAChar(player, office_desk))
             {
+                wasdFalse();
                 PlayMiniGame(office_desk);
             }
             else if (HitAChar(player, enemyCheeto))
             {
+                wasdFalse();
                 Talk(enemyCheeto);
             }
          
@@ -160,7 +171,6 @@ namespace Fall2020_CSC403_Project
             }
             if (HitAChar(techlead, player))
             {
-
                 
                 techlead.ResetMoveSpeed();
                 techlead.MoveBack();
@@ -209,30 +219,62 @@ namespace Fall2020_CSC403_Project
             frmSnake.Show();
         }
 
+        bool w = false;
+        bool s = false;
+        bool a = false;
+        bool d = false;
+
         private void FrmLevel_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            if (e.KeyCode == Keys.W)
+                w = true;
+            if (e.KeyCode == Keys.A)
+                a = true;
+            if (e.KeyCode == Keys.S)
+                s = true;
+            if (e.KeyCode == Keys.D)
+                d = true;
+
+            if (w && d)
             {
-                case Keys.A:
-                    player.GoLeft();
-                    break;
-
-                case Keys.D:
-                    player.GoRight();
-                    break;
-
-                case Keys.W:
-                    player.GoUp();
-                    break;
-
-                case Keys.S:
-                    player.GoDown();
-                    break;
-
-                default:
-                    player.ResetMoveSpeed();
-                    break;
+                player.GoUpRight();
             }
+            else if (w && a)
+            {
+                player.GoUpLeft();
+            }
+            else if (s && d)
+            {
+                player.GoDownRight();
+            }
+            else if (s && a)
+            {
+                player.GoDownLeft();
+            }
+            else if (a)
+            {
+                player.GoLeft();
+            }
+            else if (s)
+            {
+                player.GoDown();
+            }
+            else if (w)
+            {
+                player.GoUp();
+            }
+            else if (d)
+            {
+                player.GoRight();
+            }
+        }
+
+        public void wasdFalse()
+        {
+            w = false;
+            a = false;
+            s = false;
+            d = false;
         }
 
 
