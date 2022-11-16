@@ -115,13 +115,22 @@ namespace Fall2020_CSC403_Project
             }
 
             UpdateHealthBars();
-            if (player.Health <= 0 || enemy.Health <= 0)
+            if (player.Health <= 0)
+            {
+                
+                FrmGameOver gameover = new FrmGameOver();
+                Hide();
+                gameover.Show();
+                return;
+            
+            }
+            else if(enemy.Health <= 0)
             {
                 _characterimg.Visible = false;
                 instance = null;
                 Close();
-                return;
             }
+            
         }
 
         private void EnemyDamage(int amount)
@@ -142,9 +151,6 @@ namespace Fall2020_CSC403_Project
             if (player.Health <= 0)
             {
                 GameOver();
-                FrmGameOver gameover = new FrmGameOver();
-                Hide();
-                gameover.Show();
 
             }
         }
