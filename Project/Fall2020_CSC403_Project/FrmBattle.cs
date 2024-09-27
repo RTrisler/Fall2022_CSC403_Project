@@ -9,11 +9,12 @@ namespace Fall2020_CSC403_Project
 {
     public partial class FrmBattle : Form
     {
+        public bool _hasItems;
         public static FrmBattle instance = null;
         private Enemy enemy;
         private Player player;
         SoundPlayer level_music;
-        bool isClick = false;
+        public PictureBox _characterimg;
 
         public void getInventory()
         {
@@ -23,20 +24,31 @@ namespace Fall2020_CSC403_Project
                 instance.invetoryIcon.Visible = false;
             }*/
         }
-
         private FrmBattle()
         {
             InitializeComponent();
             player = Game.player;
         }
 
-        public void Setup()
+        public void Setup(PictureBox characterimg, bool hasItems)
         {
+            if (enemy.Color != Color.Bisque)
+            {
+                _hasItems = hasItems;
+                button1.Visible = hasItems;
+                button2.Visible = hasItems;
+                player.AlterHealth(-12);
+            }
+
+            
+
+            _characterimg = characterimg;
             // update for this enemy
-            picEnemy.BackgroundImage = enemy.Img;
+            picEnemy.BackgroundImage = characterimg.Image;
             picEnemy.Refresh();
             BackColor = enemy.Color;
             picBossBattle.Visible = false;
+
 
             if (player.getInventory().Count == 0)
             {
@@ -54,23 +66,25 @@ namespace Fall2020_CSC403_Project
 
         public void SetupForBossBattle()
         {
+
             picBossBattle.Location = Point.Empty;
             picBossBattle.Size = ClientSize;
-            picBossBattle.Visible = true;
+            picBossBattle.Visible = false;
 
-            SoundPlayer bossalert = new SoundPlayer(Resources.boss_intro);
-            bossalert.Play();
+            SoundPlayer bossalert = new SoundPlayer(Resources.boss);
+            bossalert.PlayLooping();
 
             tmrFinalBattle.Enabled = true;
         }
 
-        public static FrmBattle GetInstance(Enemy enemy)
+        public static FrmBattle GetInstance(Enemy enemy, PictureBox characterimg, bool hasItems)
         {
+            
             if (instance == null)
             {
                 instance = new FrmBattle();
                 instance.enemy = enemy;
-                instance.Setup();
+                instance.Setup(characterimg, hasItems);
             }
             return instance;
         }
@@ -90,24 +104,21 @@ namespace Fall2020_CSC403_Project
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
-            if (isClick == false)
-            {
-                level_music = new SoundPlayer(Resources.boss);
-                level_music.PlayLooping();
-            }
             player.OnAttack(-4);
+            if (enemy.Health > 0 && enemy.Color != Color.Bisque)
+            {
+                enemy.OnAttack(-5);
+            }
             if (enemy.Health > 0)
             {
-                isClick = true;
-                enemy.OnAttack(-2);
+                enemy.OnAttack(-3);
             }
 
             UpdateHealthBars();
             if (player.Health <= 0 || enemy.Health <= 0)
             {
+                _characterimg.Visible = false;
                 instance = null;
-                level_music = new SoundPlayer(Resources.floor1);
-                level_music.PlayLooping();
                 Close();
                 return;
             }
@@ -116,17 +127,38 @@ namespace Fall2020_CSC403_Project
         private void EnemyDamage(int amount)
         {
             enemy.AlterHealth(amount);
+            if (enemy.Health < 0 && enemy.Color != Color.Bisque)
+            {
+                instance = null;
+                this.Hide();
+                FrmYouWin youwin = new FrmYouWin();
+                youwin.Show();
+            }
         }
 
         private void PlayerDamage(int amount)
         {
             player.AlterHealth(amount);
+            if (player.Health <= 0)
+            {
+                GameOver();
+                FrmGameOver gameover = new FrmGameOver();
+                Hide();
+                gameover.Show();
+
+            }
         }
 
         private void tmrFinalBattle_Tick(object sender, EventArgs e)
         {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
+            if (_hasItems)
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+            }
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -147,6 +179,8 @@ namespace Fall2020_CSC403_Project
             UpdateHealthBars();
             if (player.Health <= 0 || enemy.Health <= 0)
             {
+                _characterimg.Visible = false;
+
                 instance = null;
                 Close();
             }
@@ -185,6 +219,11 @@ namespace Fall2020_CSC403_Project
             }
 
             ((Control)sender).Hide();
+        }
+
+        public void GameOver()
+        {
+            tmrFinalBattle.Stop();
         }
     }
 }

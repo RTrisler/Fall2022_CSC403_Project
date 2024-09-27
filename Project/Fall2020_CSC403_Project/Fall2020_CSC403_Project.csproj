@@ -35,6 +35,7 @@
   <PropertyGroup>
     <StartupObject>Fall2020_CSC403_Project.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBossLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBossLevel.Designer.cs">
+      <DependentUpon>FrmBossLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Circle.cs" />
     <Compile Include="FrmBattle.cs">
       <SubType>Form</SubType>
@@ -61,6 +68,12 @@
     </Compile>
     <Compile Include="FrmDialogue.Designer.cs">
       <DependentUpon>FrmDialogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGameOver.Designer.cs">
+      <DependentUpon>FrmGameOver.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmHelpScreen.cs">
       <SubType>Form</SubType>
@@ -86,6 +99,12 @@
     <Compile Include="FrmSnake.Designer.cs">
       <DependentUpon>FrmSnake.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmYouWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmYouWin.Designer.cs">
+      <DependentUpon>FrmYouWin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -97,8 +116,14 @@
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBossLevel.resx">
+      <DependentUpon>FrmBossLevel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDialogue.resx">
       <DependentUpon>FrmDialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGameOver.resx">
+      <DependentUpon>FrmGameOver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHelpScreen.resx">
       <DependentUpon>FrmHelpScreen.cs</DependentUpon>
@@ -111,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSnake.resx">
       <DependentUpon>FrmSnake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmYouWin.resx">
+      <DependentUpon>FrmYouWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,14 +190,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\boss_intro.wav" />
-    <None Include="Resources\boss.wav" />
-    <None Include="Resources\floor1.wav" />
-    <None Include="Resources\Image1.png" />
-    <None Include="data\inventory.png" />
+    <None Include="Resources\GameOver.png" />
+    <None Include="Resources\player.png" />
+    <None Include="Resources\enemy_koolaid.jpg" />
+    <None Include="data\enemy_koolaid1.png" />
     <Content Include="data\menubackground.jpg" />
-    <None Include="Resources\inventory.png" />
-    <None Include="Resources\inventory.bmp" />
+    <Content Include="data\persuasion.PNG" />
+    <None Include="Resources\BossLevel.gif" />
+    <None Include="Resources\BossFloor.bmp" />
+    <None Include="Resources\floor.png" />
+    <None Include="Resources\battle_screen.fw.png" />
+    <None Include="Resources\boss.wav" />
+    <None Include="Resources\boss_intro.wav" />
+    <None Include="Resources\floor1.wav" />
     <None Include="Resources\wasd.jpg" />
     <None Include="Resources\techlead.png" />
     <None Include="Resources\elevator1.png" />

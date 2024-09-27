@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HealthItem.cs" />
     <Compile Include="Inventoy.cs" />
     <Compile Include="BattleCharacter.cs" />
     <Compile Include="Character.cs" />
@@ -54,10 +55,13 @@
     <Compile Include="Dialogue.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemInfo.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector2.cs" />
+    <Compile Include="Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

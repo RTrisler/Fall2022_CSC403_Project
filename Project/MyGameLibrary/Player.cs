@@ -16,7 +16,6 @@ namespace Fall2020_CSC403_Project.code {
         {
             return inventory.getInventoryList();
         }
-
     public void removeInventoryItem(object item)
     {
        inventory.drop(item);

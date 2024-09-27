@@ -43,9 +43,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(874, 383);
+            this.button1.Location = new System.Drawing.Point(656, 306);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 43);
+            this.button1.Size = new System.Drawing.Size(74, 34);
             this.button1.TabIndex = 2;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,41 +54,48 @@
             // 
             // dialogueTextBox
             // 
+            this.dialogueTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.dialogueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dialogueTextBox.Font = new System.Drawing.Font("Old English Text MT", 22.125F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dialogueTextBox.Location = new System.Drawing.Point(534, 19);
+            this.dialogueTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dialogueTextBox.Location = new System.Drawing.Point(400, 15);
+            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
-            this.dialogueTextBox.Size = new System.Drawing.Size(914, 303);
+            this.dialogueTextBox.Size = new System.Drawing.Size(686, 242);
             this.dialogueTextBox.TabIndex = 4;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Fall2020_CSC403_Project.Properties.Resources.persuasion;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 202);
+            this.pictureBox2.Size = new System.Drawing.Size(174, 162);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
             // picPlayer
             // 
-            this.picPlayer.BackColor = System.Drawing.SystemColors.Control;
+            this.picPlayer.BackColor = System.Drawing.SystemColors.Info;
             this.picPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picPlayer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picPlayer.Image = global::Fall2020_CSC403_Project.Properties.Resources.player;
-            this.picPlayer.Location = new System.Drawing.Point(241, 0);
-            this.picPlayer.Margin = new System.Windows.Forms.Padding(6);
+            this.picPlayer.Location = new System.Drawing.Point(181, 0);
+            this.picPlayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(268, 404);
+            this.picPlayer.Size = new System.Drawing.Size(202, 324);
             this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPlayer.TabIndex = 1;
             this.picPlayer.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(1474, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1106, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(321, 393);
+            this.pictureBox1.Size = new System.Drawing.Size(241, 314);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -103,17 +111,19 @@
             // 
             // FrmDialogue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(2740, 429);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(1443, 355);
             this.Controls.Add(this.dialogueTextBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.picPlayer);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
-            this.MinimumSize = new System.Drawing.Size(2734, 500);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(1444, 411);
             this.Name = "FrmDialogue";
             this.Text = "FrmDialogue";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

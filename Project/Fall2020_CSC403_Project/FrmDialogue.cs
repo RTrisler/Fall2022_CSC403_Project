@@ -14,6 +14,8 @@ namespace Fall2020_CSC403_Project
         private int lineTracker;
         private string[] interactionDialogue = new string[] { };
         private static List<Enemy> formEnemyList = null;
+        public bool waterCoolerFlag = false;
+        public bool waterCoolerGiven = false;
         public FrmDialogue()
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace Fall2020_CSC403_Project
             lineTracker = 0;
             System.Diagnostics.Debug.WriteLine(lineTracker);
             interactionDialogue = LoadDialogue(enemy);
+            if (enemy == formEnemyList[0])
+                waterCoolerFlag = true;
             System.Diagnostics.Debug.WriteLine(interactionDialogue[lineTracker]);
             dialogueTextBox.Text = interactionDialogue[lineTracker];
             picEnemy.Visible = true;
@@ -70,8 +74,15 @@ namespace Fall2020_CSC403_Project
             if (enemy == formEnemyList[0])
             {
                 dialogueset = new string[]
-                { "Mr. Peanut: What are you doing here?",
-                  "Poisoned Bruther: I work and scrum here."};
+                { "Mr. Peanut: *In thought* Thank god a water cooler, I sure am parched.",
+                  "Water Cooler: Hi. How are you?",
+                  "Mr. Peanut: I'm fine, how are you?",
+                  "Water Cooler: Good. Did you happen to catch the big game last night?",
+                  "Mr. Peanut: Yes, I did. It was a football game, with kicks, and also with throws of the ball.",
+                  "Water Cooler: Astute observation. I like the observation, and I also like football. We enjoy football, yes?",
+                  "Mr. Peanut: Yes, we do. Here is a stapler and a tall drink of water. Glug glug. You'll need a lot of that stuff. "};
+
+
                 return dialogueset;
             }
             // cheeto ma'am
@@ -102,7 +113,14 @@ namespace Fall2020_CSC403_Project
             }
             else
             {
-                Close();
+                if (!waterCoolerGiven)
+                {
+                    if (waterCoolerFlag)
+                        player.addToInventory(0);
+                    waterCoolerFlag = false;
+                    waterCoolerGiven = true;
+                }
+                Hide();
             }
         }
 

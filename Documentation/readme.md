@@ -102,6 +102,17 @@ The form was designed by tweaking the attributes in the properties menu. The siz
 - [ ] Feature 2
 - [ ] Feature 3
     - [ ] Nested Feature
+- [ ] Implement Item System : As a user, I'd like to have different types of weapons.
+  - Creating Item Class
+    -  Process: In order to have different weapons, I have to create an item class. I had to research online on how to create an item class for a game in C#. Once I found something that could work, I read the code and comments as well as the explanations. Then, I made changes to the code for it to work for this project.
+  - Creating Weapon class
+    - Process: Once I had made the item class, I was able to make the weapon class. By using what I had researched online I applied it to the project while making sure to keep to the changes I made in the item class.
+  - Creating Item information
+    - Process: Now that I had the weapon class I was able to create the weapon stats. By researching online again, I was able to find and change the code for the game. Then, I assigned values for the parameters of the weapon class. 
+    
+- [ ] Implement Healing Item: As a user, I'd like to find items that can heal myself
+  - Creating Health item class
+    - Process: By looking at the weapon class, I made changes so that this class would not have damage stats but health. I then added the item to the item informatin class so that it would be created.
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
